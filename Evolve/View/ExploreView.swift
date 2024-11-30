@@ -31,7 +31,7 @@ struct ExploreView: View {
                                         }
                                     }
                                 )
-                            )
+                            ).padding(.top)
                         }
                     }
                     .padding(.horizontal)
