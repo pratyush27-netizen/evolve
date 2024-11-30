@@ -21,7 +21,7 @@ struct FilterChip: View {
                 .background(isSelected ? Color.blue : Color.gray.opacity(0.2))
                 .foregroundColor(isSelected ? .white : .primary)
                 .cornerRadius(20)
-                .shadow(radius: 2) // Add shadow for depth
+                .shadow(radius: 2) 
         }
     }
 }
