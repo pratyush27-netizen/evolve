@@ -13,9 +13,7 @@ class NetworkManager {
     
     private init() {}
     
-    /// Fetches journeys from the given URL and returns a publisher.
-    /// - Parameter urlString: The endpoint URL as a String.
-    /// - Returns: A publisher that emits an array of `Journey` or an error.
+
     func fetchJourneys(urlString: String) -> AnyPublisher<[Journey], Error> {
         guard let url = URL(string: urlString) else {
             return Fail(error: NetworkError.invalidURL)
@@ -29,8 +27,8 @@ class NetworkManager {
                 }
                 return output.data
             }
-            .decode(type: [Journey].self, decoder: JSONDecoder()) // Decoding directly into an array of `Journey`
-            .receive(on: DispatchQueue.main) // Switch to the main thread for UI updates
+            .decode(type: [Journey].self, decoder: JSONDecoder()) 
+            .receive(on: DispatchQueue.main) 
             .eraseToAnyPublisher()
     }
     
@@ -50,12 +48,3 @@ class NetworkManager {
     }
 }
 
-// struct PaginatedResponse: Codable {
-//     let journeys: [Journey]
-//     let totalPages: Int
-//
-//     enum CodingKeys: String, CodingKey {
-//         case journeys = "data" 
-//         case totalPages = "total_pages"
-//     }
-// }
